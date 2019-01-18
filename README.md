@@ -36,31 +36,16 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
 
-driver=com.mysql.jdbc.Driver	
-
-\#\#不用改、上面是Mysql5的驱动
-
-url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
-
-\#\#修改中划线部分的**ip地址**和**数据库名**
-
-username=\*\*\*\*\*\*\*\*\*\*\*
-
-\#\#修改信源数据库用户名
-
-password=\*\*\*\*\*\*\*\*\*\*\*
-
-\#\#修改信源数据库用户名密码
-
-`上面是信源库的数据库配置信息、下面是采集库的数据库配置信息`
-
-driver2=com.mysql.jdbc.Driver 
-
-url2=jdbc:mysql://~~10.61.1.28:3306/wde_monitor_wm~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true   	
-
-username2=		\#\#导入到的采集库用户名
-
-password2=		\#\#导入到的采集库密码
+driver=com.mysql.jdbc.Driver	\#\#不用改、上面是Mysql5的驱动
+<br>url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
+<br>\#\#修改中划线部分的**ip地址**和**数据库名**
+<br>username=\*\*\*\*\*\*\*\*\*\*\*      \#\#修改信源数据库用户名
+<br>password=\*\*\*\*\*\*\*\*\*\*\*      \#\#修改信源数据库用户名密码
+<br>`上面是信源库的数据库配置信息、下面是采集库的数据库配置信息`
+<br>driver2=com.mysql.jdbc.Driver 
+<br>url2=jdbc:mysql://~~10.61.1.28:3306/wde_monitor_wm~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true   	
+<br>username2=		\#\#导入到的采集库用户名
+<br>password2=		\#\#导入到的采集库密码
 
 
 #### 3.1.2 挂载参数运行mybatisbase.jar文件
