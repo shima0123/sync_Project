@@ -2,11 +2,11 @@
 
 ## 1 简介
 
-同步工具主要是从信源库向**（新、老）两个版本**的采集库同步信源。可以按照**业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件**五种方式进行选择，并可以选择**time_create信源创建时间**于某时间段以后的信源进行同步。
+同步工具主要是从信源库向**\（新、老\）两个版本**的采集库同步信源。可以按照**业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件**五种方式进行选择，并可以选择**time\_create信源创建时间**于某时间段以后的信源进行同步。
 
 分为**本地运行版**和**API / request版**。本地运行版是可以直接运行jar包并挂载筛选条件的独立程序(基于Mybatis)。API/request版分为API端和request端：API端采用SSM框架，支持权限校验；request端在运行jar包时挂载筛选条件。一共6个jar包。
 
-本地运行版和服务请求版，均需要在运行前**配置好(application.properties或jdbc*.properties)**的数据库连接配置文件)。
+本地运行版和服务请求版，均需要在运行前**配置好\(application\.properties或jdbc\*\.properties\)**的数据库连接配置文件。
 
 支持分页同步、记录并锁定批量同步的时间、异常情况分类统计和输入参数容错。
 
@@ -35,8 +35,8 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 首先需要配置好数据库连接信息，即jdbc.properties文件中的相关信息。改动部分在下方代码中下划线标注。
 
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
-\<font color=dark red\>咋回事儿\</font\>
-\<span style="border\-bottom:2px dashed yellow;"\>咋回事儿\</span\>
+<font color=dark red>咋回事儿</font>
+<span style="border-bottom:2px dashed yellow;">咋回事儿</span>
 
 driver=com.mysql.jdbc.Driver	
 不用改、这个是Mysql5的驱动
@@ -102,7 +102,7 @@ API_request或API_request_OLD文件夹下，包含API端和request端两个文�
 例如：java -jar api.jar
 
 这时如果用浏览器访问8080端口的相关服务接口，填入账号和密码后，也可以查询到相关的信源。
-例如：访问接口http://localhost:8080/tongbu?updatetime=2000-12-12\+10:10:10&businessid=1
+例如：访问接口http://localhost:8080/tongbu?updatetime=2000-12-12+10:10:10&businessid=1
 可以得到业务ID为1的若干条信源，json格式。
 
 #### 3.2.3 修改mysql数据库连接信息(导入到的采集库)
