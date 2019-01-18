@@ -32,9 +32,28 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 ### 3.1 本地运行版使用说明
 #### 3.1.1 修改mysql数据库连接信息(信源库和采集库)
-首先需要配置好数据库连接信息，即jdbc.properties文件中的相关信息。改动部分在下图中粗体，下划线标注。
+首先需要配置好数据库连接信息，即jdbc.properties文件中的相关信息。改动部分在下方代码中下划线标注。
 
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
+
+>driver=com.mysql.jdbc.Driver	
+>不用改、这个是Mysql5的驱动
+>url=jdbc:mysql://<span style="border-bottom:2px dashed yellow;">10.61.1.37:3306/wde</span>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
+>主要改动下划线部分的地址和数据库名
+>username=\*\*\*\*\*\*\*\*\*\*\*			
+>信源数据库用户名
+>password=\*\*\*\*\*\*\*\*\*\*\*
+>信源数据库用户名密码
+
+>上面是信源库的数据库配置信息、下面是采集库的数据库配置信息
+>driver2=com.mysql.jdbc.Driver 
+>url2=jdbc:mysql://10.61.1.28:3306/wde_monitor_wm?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true   	
+>28服务器上的wde_monitor_wm数据库
+>username2=wde		
+>导入到的采集数据库用户名
+>password2=*****		
+>导入到的采集数据库用户名密码
+
 
 
 #### 3.1.2 挂载参数运行mybatisbase.jar文件
@@ -47,7 +66,17 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 -boardsfile 参数的使用：只需将jar打包文件和××××.txt放在同一目录，然后挂载参数加上 -boardsfile或-f xxxx.txt即可，xxxx.txt中的信源格式为每一行一个boardid即可，换行分隔，无需其他格式。
 
 参数说明：
-
+|挂载参数控制符 |说明|
+|：------|：------|
+|-businessid -getbs -bs	|必须预先设定这次同步使用的业务businessid值，例如：-bs 2|
+|-updatetime -getd -d	|可选是否设定updatetime，默认为lastupdatetime.lock文件中记录的时间值，格式yyyy-MM-dd%HH:mm:ss，空格分开日期与时间|
+|-mediaid -getm -m	|可选模式1：根据mediaid选择一批满足条件的board|
+|-sourceclusterid -gets -s 	|可选模式2：根据sourceclusterid选择一批满足条件的board|
+|-boardid -getb -b	|可选模式3：根据boardid选择一条满足条件的board|
+|-boardsfile -getf -f	|可选模式4：根据boardsfile.txt中的boardid进行批量同步|
+|-size	|可选择设定分页每页信息条数，默认值50 |
+|-page	|可选择分页页码，默认为第1页，支持异步分页导入|
+|-h -help -geth	|帮助信息|
 
 
 
@@ -85,8 +114,20 @@ jdbc_request.properties文件中采集库的数据库配置信息，如下图所
 
 参数说明：
 
-
-
+|挂载参数控制符 |说明|
+|：------|：------|
+|-businessid -getbs -bs	|必须预先设定这次同步使用的业务businessid值，例如：-bs 2|
+|-updatetime -getd -d	|可选是否设定updatetime，默认为lastupdatetime.lock文件中记录的时间值，格式yyyy-MM-dd%HH:mm:ss，空格分开日期与时间|
+|-mediaid -getm -m	|可选模式1：根据mediaid选择一批满足条件的board|
+|-sourceclusterid -gets -s 	|可选模式2：根据sourceclusterid选择一批满足条件的board|
+|-boardid -getb -b	|可选模式3：根据boardid选择一条满足条件的board|
+|-boardsfile -getf -f	|可选模式4：根据boardsfile.txt中的boardid进行批量同步|
+|-size	|可选择设定分页每页信息条数，默认值50 |
+|-page	|可选择分页页码，默认为第1页，支持异步分页导入|
+|-h -help -geth	|帮助信息|
+|__-password -pwd -p__ |__账号密码__ |
+|__-ip -i -ipaddress__ |__API服务的IP地址，默认值为127.0.0.1，例如 -ip 10.61.1.37__ |
+	
 
 #### 3.2.5 查看反馈信息
 这一版在request端和服务api端都可以看到程序比较准确的报错信息，反馈错误信息包括最后的统计结果打印输出（API端和request端都有）、log日志和request端的unsuccess.txt文件记录。打印输出中有详细的错误信息和纠正提示，unsuccess.txt文件中记录的是多条board信源一批同步时其中不成功的board信源情况。
@@ -133,9 +174,9 @@ Request端同样挂在参数-h 可以输出帮助信息，以便随时查看。
 | 时间 | 角色 | 姓名 | 邮箱 |
 | - | - | - | - |
 | 2018.9-2018.10 | 开发者 | 周映彤 | zhouyingtong17s@ict.ac.cn |
-| - | - | - | - |
 | 2019.1-2019.1 | 开发者 | 周映彤 | zhouyingtong17s@ict.ac.cn |
 | - | - | - | - |
+
 
 ## 发现问题
 
@@ -144,3 +185,88 @@ Request端同样挂在参数-h 可以输出帮助信息，以便随时查看。
 ## TODO List
 
 - [ ]
+
+
+## 附录： 信源同步时字段间的对应关系
+信源库和老版本采集库中各个表之间属性间的对应关系：
+```
+select board.id as board_id,
+board.jhi_key as board_jhikey,
+board.name as board_name,
+board.config as board_config,
+board.add_time as board_addtime,
+board.js as board_js,
+board.proxy as board_proxy,
+board.importance as board_importance,
+source_cluster.name as sourcecluster_name,
+source_cluster.id as sourcecluster_id,
+media.id as media_id,
+board_class.name as boardclass_name,
+batch.business_id as batch_businessid
+from board
+left join source_cluster on board.source_cluster_id=source_cluster.id
+left join media on source_cluster.media_id=media.id
+left join batch_board on board.id=batch_board.board_id
+left join batch on batch.id=batch_board.batch_id
+left join board_class_map bcm on board.id = bcm.board_id
+left join board_class on bcm.board_class_id = board_class.id
+where board.status='FINISHED'
+and media.id= #{mediaid}
+and batch.business_id =#{businessid}
+and DATE_FORMAT(board.update_Time,'%Y-%m-%d %H:%i:%s')>=#{updatetimeStr}
+ORDER BY board.update_Time
+```
+
+以及 config字段的封装对应关系：
+```
+crawler.setBusiness_type(String.valueOf(businessid).concat("|").concat(businessname));
+crawler.setDescription("");
+crawler.setTime_modify(new Timestamp(System.currentTimeMillis()));
+if(crawler.getImportance()!=null) priority = crawler.getImportance();
+else {priority = crawler.getPriority(); if (priority > 10 || priority < 1) priority = 10;}
+crawler.setPriority(priority);
+String configtemp = crawler.getConfig();
+Configjson configjson = objectMapper.readValue(configtemp, Configjson.class);
+Config config = new Config();
+config.setApp_id(businessid);
+boardID=crawler.getSource_id();
+config.setBoard_id(boardID);
+config.setSite_id(crawler.getSource_cluster());
+config.setChannel_id(crawler.getSource_media());
+config.setBoard_name(crawler.getSource_name());
+config.setSite_name(crawler.getSource_cluster_name());
+config.setEntry_url(crawler.getSource_url());
+config.setCharacter_set(configjson.getCharset());
+if (configjson.getEntry_type() == null) config.setEntry_type(0);
+else config.setEntry_type(Integer.parseInt(configjson.getEntry_type()));
+if (configjson.getCurrentRegex() == null) config.setCurrent_news_regex(null);
+else config.setCurrent_news_regex(configjson.getCurrent_news_regex());
+if (configjson.getGather_depth() == null) config.setGather_depth(1);
+else config.setGather_depth(Integer.parseInt(configjson.getGather_depth()));
+if (configjson.getEvidence_degree() == null) config.setEvidence_degree(3);
+else config.setEvidence_degree(Integer.parseInt(configjson.getEvidence_degree()));
+if (configjson.getIs_homepage() == null) config.setIs_homepage(0);
+else config.setIs_homepage(Integer.parseInt(configjson.getIs_homepage()));
+if (configjson.getSub_board_list() == null) config.setSub_board_list(null);
+else config.setSub_board_list(configjson.getSub_board_list());
+if (configjson.getPost_enabled() == null) config.setPost_enabled(0);
+else config.setPost_enabled(Integer.parseInt(configjson.getPost_enabled()));
+config.setImportance_degree(crawler.getPriority());
+config.setHttp_interval(configjson.getHttpInterval());
+config.setDocurl_regex_yes(configjson.getDocurlRegexYes());
+config.setDocurl_regex_no(configjson.getDocurlRegexNo());
+config.setDocurl_regex_page(configjson.getDocurlRegexPage());
+config.setImgurl_regex_no(configjson.getImgurlRegexNo());
+config.setImgurl_regex_yes(configjson.getImgurlRegexYes());
+config.setBoardurl_page_regex(configjson.getCurrentRegex());
+config.setBoardurl_max_pages(configjson.getBoardUrlMaxPages());
+config.setRefresh_period(configjson.getRefreshPeriod());configtemp = configjson.getExtractorConfig();
+if (configtemp == null|| configtemp.equals(""))config.setExtractor_config("");
+else config.setExtractor_config(split_extractorConfig(configjson.getExtractorConfig()));
+config.setJs_enabled(crawler.getJs());
+config.setGfw_enabled(crawler.getProxy());
+config.setBoard_class_tag(crawler.getBoard_class_tag());
+xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+String strConfig = xmlMapper.writeValueAsString(config).replace("</Config>", "</board>\n").replace("<Config>", "<board>");
+crawler.setConfig(strConfig);
+```
