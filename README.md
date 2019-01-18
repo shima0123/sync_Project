@@ -2,7 +2,7 @@
 
 ## 1 简介
 
-同步工具主要是从信源库向`（新、老）两个版本`的采集库同步信源。可以按照`业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件`五种方式进行选择，并可以选择`time_create信源创建时间`于某时间段以后的信源进行同步。
+同步工具主要是从信源库向 **（新、老）两个版本 ** 的采集库同步信源。可以按照 ** 业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件 ** 五种方式进行选择，并可以选择 ** time_create信源创建时间 ** 于某时间段以后的信源进行同步。
 
 分为`本地运行版`和`API / request版`。本地运行版是可以直接运行jar包并挂载筛选条件的独立程序(基于Mybatis)。API/request版分为API端和request端：API端采用SSM框架，支持权限校验；request端在运行jar包时挂载筛选条件。一共6个jar包。
 
@@ -37,7 +37,7 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
 
 driver=com.mysql.jdbc.Driver	**\#\#不用改Mysql5的驱动**
-<br>url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true\t **\#\#修改划掉部分的ip地址和数据库名**
+<br>url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true **\#\#修改划掉部分的ip地址和数据库名**
 <br>username=~~\*\*\*\*\*\*\*\*\*\*\*~~ **\#\#修改信源数据库用户名**
 <br>password=~~\*\*\*\*\*\*\*\*\*\*\*~~ **\#\#修改信源数据库密码**
 <br>
@@ -86,7 +86,7 @@ API_request或API_request_OLD文件夹下，包含API端和request端两个文�
 注意，修改好之后，不能修改文件名并将application.properties置于api.jar的同一目录中。
 
 mybatis.datasource.driver=com.mysql.jdbc.Driver	**\#\#不用改Mysql5的驱动**
-<br>mybatis.datasource.url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true**\#\#修改划掉部分的ip地址和数据库名**
+<br>mybatis.datasource.url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true **\#\#修改划掉部分的ip地址和数据库名**
 <br>mybatis.datasource.username=~~\*\*\*\*\*\*\*\*\*\*\*~~ **\#\#修改信源数据库用户名**
 <br>mybatis.datasource.password=~~\*\*\*\*\*\*\*\*\*\*\*~~ **\#\#修改信源数据库密码**
 <br>
