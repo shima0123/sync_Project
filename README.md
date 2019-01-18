@@ -32,32 +32,35 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 ### 3.1 本地运行版使用说明
 #### 3.1.1 修改mysql数据库连接信息(信源库和采集库)
-首先需要配置好数据库连接信息，即jdbc.properties文件中的相关信息。改动部分在下方代码中下划线标注。
+首先需要配置好数据库连接信息，即jdbc.properties文件中的相关信息。改动部分在下方划线标注。
 
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
 
-<font color=#8B0000 size=72>咋回事儿</font>
-<br>
-<span style="border-bottom:4px dashed yellow;">咋回事儿</span>
-
 driver=com.mysql.jdbc.Driver	
-不用改、这个是Mysql5的驱动
-url=jdbc:mysql://\<font color=dark red\>10.61.1.37:3306/wde\</font\>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
-主要改动下划线部分的地址和数据库名
+
+\#\#不用改、上面是Mysql5的驱动
+
+url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
+
+\#\#修改中划线部分的**ip地址**和**数据库名**
+
 username=\*\*\*\*\*\*\*\*\*\*\*
-信源数据库用户名
+
+\#\#修改信源数据库用户名
+
 password=\*\*\*\*\*\*\*\*\*\*\*
-信源数据库用户名密码
 
->上面是信源库的数据库配置信息、下面是采集库的数据库配置信息
->driver2=com.mysql.jdbc.Driver 
->url2=jdbc:mysql://10.61.1.28:3306/wde_monitor_wm?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true   	
->28服务器上的wde_monitor_wm数据库
->username2=wde		
->导入到的采集数据库用户名
->password2=
->导入到的采集数据库用户名密码
+\#\#修改信源数据库用户名密码
 
+`上面是信源库的数据库配置信息、下面是采集库的数据库配置信息`
+
+driver2=com.mysql.jdbc.Driver 
+
+url2=jdbc:mysql://~~10.61.1.28:3306/wde_monitor_wm~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true   	
+
+username2=		\#\#导入到的采集库用户名
+
+password2=		\#\#导入到的采集库密码
 
 
 #### 3.1.2 挂载参数运行mybatisbase.jar文件
