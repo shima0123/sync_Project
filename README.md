@@ -38,7 +38,7 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 >driver=com.mysql.jdbc.Driver	
 >不用改、这个是Mysql5的驱动
->url=jdbc:mysql://<span style="border-bottom:2px dashed yellow;">10.61.1.37:3306/wde</span>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
+>url=jdbc:mysql://\<span style="border-bottom:2px dashed yellow;"\>10.61.1.37:3306/wde\</span\>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
 >主要改动下划线部分的地址和数据库名
 >username=\*\*\*\*\*\*\*\*\*\*\*			
 >信源数据库用户名
@@ -65,7 +65,8 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 -boardsfile 参数的使用：只需将jar打包文件和××××.txt放在同一目录，然后挂载参数加上 -boardsfile或-f xxxx.txt即可，xxxx.txt中的信源格式为每一行一个boardid即可，换行分隔，无需其他格式。
 
-参数说明：
+#####参数说明：
+
 |挂载参数控制符 |说明|
 |：------|：------|
 |-businessid -getbs -bs	|必须预先设定这次同步使用的业务businessid值，例如：-bs 2|
