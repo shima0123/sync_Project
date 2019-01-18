@@ -37,7 +37,7 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
 
 driver=com.mysql.jdbc.Driver	**\#\#不用改Mysql5的驱动**
-<br>url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true**\#\#修改划掉部分的ip地址和数据库名**
+<br>url=jdbc:mysql://~~10.61.1.\*\*:3306/wde\*\*~~?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true\t **\#\#修改划掉部分的ip地址和数据库名**
 <br>username=~~\*\*\*\*\*\*\*\*\*\*\*~~ **\#\#修改信源数据库用户名**
 <br>password=~~\*\*\*\*\*\*\*\*\*\*\*~~ **\#\#修改信源数据库密码**
 <br>
