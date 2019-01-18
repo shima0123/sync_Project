@@ -2,7 +2,7 @@
 
 ## 1 简介
 
-同步工具主要是从信源库向 ** （新、老）两个版本 ** 的采集库同步信源。可以按照 ** 业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件 ** 五种方式进行选择，并可以选择 ** time_create信源创建时间 ** 于某时间段以后的信源进行同步。
+同步工具主要是从信源库向 ` （新、老）两个版本 ` 的采集库同步信源。可以按照 ` 业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件 ` 五种方式进行选择，并可以选择 ` time_create信源创建时间 ` 于某时间段以后的信源进行同步。
 
 分为`本地运行版`和`API / request版`。本地运行版是可以直接运行jar包并挂载筛选条件的独立程序(基于Mybatis)。API/request版分为API端和request端：API端采用SSM框架，支持权限校验；request端在运行jar包时挂载筛选条件。一共6个jar包。
 
