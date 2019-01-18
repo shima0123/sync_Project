@@ -36,14 +36,14 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 注意，修改好之后，不能修改文件名并将jdbc.properties置于mybatisbase.jar的同一目录中。
 
->driver=com.mysql.jdbc.Driver	
->不用改、这个是Mysql5的驱动
->url=jdbc:mysql://\<span style="border-bottom:2px dashed yellow;"\>10.61.1.37:3306/wde\</span\>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
->主要改动下划线部分的地址和数据库名
->username=\*\*\*\*\*\*\*\*\*\*\*			
->信源数据库用户名
->password=\*\*\*\*\*\*\*\*\*\*\*
->信源数据库用户名密码
+driver=com.mysql.jdbc.Driver	
+不用改、这个是Mysql5的驱动
+url=jdbc:mysql://\<span style="border-bottom:2px dashed yellow;"\>10.61.1.37:3306/wde\</span\>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
+主要改动下划线部分的地址和数据库名
+username=\*\*\*\*\*\*\*\*\*\*\*			
+信源数据库用户名
+password=\*\*\*\*\*\*\*\*\*\*\*
+信源数据库用户名密码
 
 >上面是信源库的数据库配置信息、下面是采集库的数据库配置信息
 >driver2=com.mysql.jdbc.Driver 
@@ -68,7 +68,7 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 #####参数说明：
 
 |挂载参数控制符 |说明|
-|：------|：------|
+|:-------|:-------|
 |-businessid -getbs -bs	|必须预先设定这次同步使用的业务businessid值，例如：-bs 2|
 |-updatetime -getd -d	|可选是否设定updatetime，默认为lastupdatetime.lock文件中记录的时间值，格式yyyy-MM-dd%HH:mm:ss，空格分开日期与时间|
 |-mediaid -getm -m	|可选模式1：根据mediaid选择一批满足条件的board|
