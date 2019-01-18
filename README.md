@@ -2,20 +2,20 @@
 
 ## 1 简介
 
-同步工具主要是从信源库向（新、老）两个版本的采集库同步信源。可以按照业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件五种方式进行选择，并可以选择time_create信源创建时间于某时间段以后的信源进行同步。
+同步工具主要是从信源库向__（新、老）两个版本__的采集库同步信源。可以按照**业务businessID、通道mediaID、信蔟sourceclusterID、信源boardID、信源列表boardList文件**五种方式进行选择，并可以选择**time_create信源创建时间**于某时间段以后的信源进行同步。
 
-分为本地运行版和API / request版。本地运行版是可以直接运行jar包并挂载筛选条件的独立程序(基于Mybatis)。API/request版分为API端和request端：API端采用SSM框架，支持权限校验；request端在运行jar包时挂载筛选条件。一共6个jar包。
+分为__本地运行版__和__API / request版__。本地运行版是可以直接运行jar包并挂载筛选条件的独立程序(基于Mybatis)。API/request版分为API端和request端：API端采用SSM框架，支持权限校验；request端在运行jar包时挂载筛选条件。一共6个jar包。
 
-本地运行版和服务请求版，均需要在运行前配置好(application.properties或jdbc*.properties)的数据库连接配置文件)。
+本地运行版和服务请求版，均需要在运行前__配置好(application.properties或jdbc*.properties)__的数据库连接配置文件)。
 
 支持分页同步、记录并锁定批量同步的时间、异常情况分类统计和输入参数容错。
 
 
 ## 2 开发环境说明
 
-* Jdk版本 1.7
+* __Jdk版本 1.7__
 
-* Mysql版本5
+* __Mysql版本5__
 
 * Maven版本 4.0.0（Maven-compiler版本1.9、单机运行版Maven-shade版本2.4.1、API版 springboot版本 2.0.1.RELEASE）
 
@@ -38,7 +38,7 @@ hebing_mybatisbase文件夹为本地运行版。带OLD标志的是同步到老�
 
 driver=com.mysql.jdbc.Driver	
 不用改、这个是Mysql5的驱动
-url=jdbc:mysql://\<span style="border-bottom:2px dashed yellow;"\>10.61.1.37:3306/wde\</span\>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
+url=jdbc:mysql://\<font color=dark red\>10.61.1.37:3306/wde\</font\>?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&allowMultiQueries=true		
 主要改动下划线部分的地址和数据库名
 username=\*\*\*\*\*\*\*\*\*\*\*			
 信源数据库用户名
@@ -61,9 +61,9 @@ password=\*\*\*\*\*\*\*\*\*\*\*
 
 程序识别参数时具有一定容错性。这里updatetime的时间格式就是这样输入数字加分隔符，日期和时间之间用空格隔开即可。并且如果挂在了两个或多个可选模式的参数，程序会按照都符合这些挂载参数的最小粒度信源进行同步，不都符合则报错提示。
 
-另外，由于加入了分页机制，如果想一次性导入大批量的信源，建议将size参数设为比较大的值，如例子中-size 1000000即可。
+另外，由于加入了分页机制，如果想__一次性导入大批量的信源__，建议将size参数设为比较大的值，如例子中-size 1000000即可。
 
--boardsfile 参数的使用：只需将jar打包文件和××××.txt放在同一目录，然后挂载参数加上 -boardsfile或-f xxxx.txt即可，xxxx.txt中的信源格式为每一行一个boardid即可，换行分隔，无需其他格式。
+__-boardsfile 参数的使用__：只需将jar打包文件和××××.txt放在同一目录，然后挂载参数加上 -boardsfile或-f xxxx.txt即可，xxxx.txt中的信源格式为每一行一个boardid即可，换行分隔，无需其他格式。
 
 #####参数说明：
 
@@ -73,7 +73,7 @@ password=\*\*\*\*\*\*\*\*\*\*\*
 |-updatetime -getd -d	|可选是否设定updatetime，默认为lastupdatetime.lock文件中记录的时间值，格式yyyy-MM-dd%HH:mm:ss，空格分开日期与时间|
 |-mediaid -getm -m	|可选模式1：根据mediaid选择一批满足条件的board|
 |-sourceclusterid -gets -s 	|可选模式2：根据sourceclusterid选择一批满足条件的board|
-|-boardid -getb -b	|可选模式3：根据boardid选择一条满足条件的board|
+|-boardid -getb -b	|可选模式3：根据boardid选择__一条__满足条件的board|
 |-boardsfile -getf -f	|可选模式4：根据boardsfile.txt中的boardid进行批量同步|
 |-size	|可选择设定分页每页信息条数，默认值50 |
 |-page	|可选择分页页码，默认为第1页，支持异步分页导入|
@@ -109,14 +109,14 @@ jdbc_request.properties文件中采集库的数据库配置信息，如下图所
 注意，修改好之后，不能修改文件名并将jdbc_request.properties置于request.jar的同一目录中。向老版本库同步的对应文件名是 jdbc_request_old.properties和request_old.jar。
 
 #### 3.2.4 挂载参数发起request端请求
-挂载参数，运行request端文件夹中的request.jar文件。与本地运行版相同，多出的参数是，必须输入账号和密码两个参数，以完成权限校验。还有API服务端ip地址的参数-ip需要确认。
+挂载参数，运行request端文件夹中的request.jar文件。与本地运行版相同，多出的参数是，必须__输入账号和密码__两个参数，以完成权限校验。还有API服务端__ip地址__的参数-ip需要确认。
 
 例如：java -jar mybatisbase.jar -bs 1 -b 10602302 -username zhouyt -password 1234** -ip 10.61.1.37
 
 参数说明：
 
 |挂载参数控制符 |说明|
-|：------|：------|
+|:------|:------|
 |-businessid -getbs -bs	|必须预先设定这次同步使用的业务businessid值，例如：-bs 2|
 |-updatetime -getd -d	|可选是否设定updatetime，默认为lastupdatetime.lock文件中记录的时间值，格式yyyy-MM-dd%HH:mm:ss，空格分开日期与时间|
 |-mediaid -getm -m	|可选模式1：根据mediaid选择一批满足条件的board|
@@ -137,7 +137,7 @@ jdbc_request.properties文件中采集库的数据库配置信息，如下图所
 ## 4 维护说明
 
 ### 4.1 lastupdatetime.lock文件
-按BusinessID值同步并且不设置updatetime时间时，单击运行版和服务请求版的request端会记录这次同步发生的时间，写入lastupdatetime.lock文件中。下一次所有不挂载updatetime参数的同步请求都会从这个日期之后进行同步。
+按BusinessID值同步并且不设置updatetime时间时，单击运行版和服务请求版的request端会记录这次同步发生的时间，写入lastupdatetime.lock文件中。下一次所有__不挂载updatetime参数的同步请求__都会从这个日期之后进行同步。
 
 如果同步时挂载了updatetime参数，那么lastupdatetime.lock文件中的时间记录值不会改变也不会被使用。
 
@@ -150,7 +150,7 @@ jdbc_request.properties文件中采集库的数据库配置信息，如下图所
 * 非空属性类（采集库中要求非空的属性值，在封装前是一个空值）
 * 找不到对应ID类（信源库中没有找到信源）
 
-在unsuccess.txt中可以查看多条信源一起同步时，出错信源的信息。
+在__unsuccess.txt__中可以查看多条信源一起同步时，出错信源的信息。
 
 所有统计的错误信息都是为了使用人员根据报错信息，进行相关修正后再次同步成功。
 
